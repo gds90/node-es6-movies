@@ -175,12 +175,20 @@ class Cart {
     constructor() {
         this.cart = [];
     }
+
     addMovie(movie) {
         this.cart.push(movie);
     }
+
     removeMovie(movie) {
-        this.cart = this.cart.filter(item => item !== movie);
+        const index = this.cart.indexOf(movie);
+        if (index > -1) {
+            this.cart.splice(index, 1);
+        } else {
+            console.log("Film non trovato");
+        }
     }
+
     totalCost() {
         let total = 0;
         this.cart.forEach(() => {
@@ -193,10 +201,14 @@ class Cart {
 const cart = new Cart();
 cart.addMovie(mediaArray[0]);
 cart.addMovie(mediaArray[1]);
+cart.addMovie(mediaArray[1]);
 cart.addMovie(mediaArray[2]);
+console.log(cart);
 console.log(cart.totalCost());
 cart.removeMovie(mediaArray[0]);
-cart.removeMovie(mediaArray[1]);
+console.log(cart);
+cart.removeMovie(mediaArray[4]);
+console.log(cart);
 console.log(cart.totalCost());
 cart.removeMovie(mediaArray[2]);
 console.log(cart.totalCost());
