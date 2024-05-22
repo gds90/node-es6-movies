@@ -16,28 +16,115 @@ const mediaArray = [
 
 // Classe Movie
 class Movie {
+    #title;
+    #year;
+    #genre;
+    #rating;
+    #type;
+
     constructor(title, year, genre, rating, type) {
-        this.title = title;
-        this.year = year;
-        this.genre = genre;
-        this.rating = rating;
-        this.type = type;
+        this.#title = title;
+        this.#year = year;
+        this.#genre = genre;
+        this.#rating = rating;
+        this.#type = type;
+    }
+
+    // Getter
+    get title() {
+        return this.#title;
+    }
+    get year() {
+        return this.#year;
+    }
+    get genre() {
+        return this.#genre;
+    }
+    get rating() {
+        return this.#rating;
+    }
+    get type() {
+        return this.#type;
+    }
+
+    // Setter
+    set title(newTitle) {
+        this.#title = newTitle;
+    }
+    set year(newYear) {
+        this.#year = newYear;
+    }
+    set genre(newGenre) {
+        this.#genre = newGenre;
+    }
+    set rating(newRating) {
+        this.#rating = newRating;
+    }
+    set type(newType) {
+        this.#type = newType;
     }
 
     toString() {
-        return `${this.title} è un film di genere ${this.genre}. È stato rilasciato nel ${this.year} ed ha un voto di ${this.rating}.`
+        return `${this.#title} è un film di genere ${this.#genre}. È stato rilasciato nel ${this.#year} ed ha un voto di ${this.#rating}.`
     }
 }
 
 // Classe TvSerie
 class TvSerie extends Movie {
+    #title;
+    #year;
+    #genre;
+    #rating;
+    #type;
+    #seasons;
+
     constructor(title, year, genre, rating, type, seasons) {
         super(title, year, genre, rating, type);
-        this.seasons = seasons;
+        this.#seasons = seasons;
+    }
+
+    // Getter
+    get title() {
+        return this.#title;
+    }
+    get year() {
+        return this.#year;
+    }
+    get genre() {
+        return this.#genre;
+    }
+    get rating() {
+        return this.#rating;
+    }
+    get type() {
+        return this.#type;
+    }
+    get seasons() {
+        return this.#seasons;
+    }
+
+    // Setter
+    set title(newTitle) {
+        this.#title = newTitle;
+    }
+    set year(newYear) {
+        this.#year = newYear;
+    }
+    set genre(newGenre) {
+        this.#genre = newGenre;
+    }
+    set rating(newRating) {
+        this.#rating = newRating;
+    }
+    set type(newType) {
+        this.#type = newType;
+    }
+    set seasons(newSeasons) {
+        this.#seasons = newSeasons;
     }
 
     toString() {
-        return `${this.title} è una serie tv di genere ${this.genre}. La prima stagione è stata rilasciata nel ${this.year} ed in totale sono state prodotte ${this.seasons} stagioni. Ha un voto di ${this.rating}.`
+        return `${this.#title} è una serie tv di genere ${this.#genre}. La prima stagione è stata rilasciata nel ${this.#year} ed in totale sono state prodotte ${this.#seasons} stagioni. Ha un voto di ${this.#rating}.`
     }
 }
 
@@ -82,3 +169,35 @@ function filteredMediaByGenre(mediaArr, genre) {
 }
 
 console.log(filteredMediaByGenre(mediaArrayMapped, "Action"));
+
+// Creare una classe Cart dove poter salvare i film che si intende noleggiare. Tramite delle funzioni, poter aggiungere o togliere dei film dal carrello. Creare poi una funzione che stampi il costo totale dei film da noleggiare, dove per ogni film occorre specificare un prezzo fisso di 3.99
+class Cart {
+    constructor() {
+        this.cart = [];
+    }
+    addMovie(movie) {
+        this.cart.push(movie);
+    }
+    removeMovie(movie) {
+        this.cart = this.cart.filter(item => item !== movie);
+    }
+    totalCost() {
+        let total = 0;
+        this.cart.forEach(() => {
+            total += 3.99;
+        });
+        return (total + '€');
+    }
+}
+
+const cart = new Cart();
+cart.addMovie(mediaArray[0]);
+cart.addMovie(mediaArray[1]);
+cart.addMovie(mediaArray[2]);
+console.log(cart.totalCost());
+cart.removeMovie(mediaArray[0]);
+cart.removeMovie(mediaArray[1]);
+console.log(cart.totalCost());
+cart.removeMovie(mediaArray[2]);
+console.log(cart.totalCost());
+
