@@ -52,7 +52,7 @@ const mediaArrayMapped = mediaArray.map((media) => {
 
 console.log(mediaArrayMapped);
 
-// Creiamo una funzione che restituisca la media dei voti di tutti i film per un determinato genere. Prevedere un argomento per la lista dei film ed uno per il genere.
+// Funzione che restituisca la media dei voti di tutti i film per un determinato genere. 
 function averageRating(mediaArr, genre) {
     const filteredMedia = mediaArr.filter(media => media.genre === genre);
     const rateSum = filteredMedia.reduce((sum, media) => sum + media.rating, 0);
@@ -60,3 +60,25 @@ function averageRating(mediaArr, genre) {
 }
 
 console.log(averageRating(mediaArray, "Drama"));
+
+// Funzione che restituisca la lista di tutti i generi dei film, senza che questi si ripetano.
+function genresList(mediaArr) {
+    const genres = [];
+    mediaArr.forEach((item) => {
+        if (!genres.includes(item.genre)) {
+            genres.push(item.genre);
+        }
+    });
+    return genres;
+}
+
+console.log(genresList(mediaArray));
+
+// Funzione che filtri i film in base ad un genere passato come argomento e ne ritorni un array con all'interno il risultato della funzione toString() di ogni film.
+function filteredMediaByGenre(mediaArr, genre) {
+    const filteredMedia = mediaArr.filter(media => media.genre === genre);
+    const filteredMediaToString = filteredMedia.map(media => media.toString());
+    return filteredMediaToString;
+}
+
+console.log(filteredMediaByGenre(mediaArrayMapped, "Action"));
