@@ -1,0 +1,17 @@
+{
+  "name": "es6-movies",
+  "version": "1.0.0",
+  "description": "Esercizio Definire un array di oggetti; ogni oggetto rappresenta un film o serie tv, che è caratterizzato da: title, year, genre, rating, type (movie o tv), seasons (solo per serie tv).",
+  "main": "index.js",
+  "scripts": {
+    "start": "node movie.js",
+    "dev": "nodemon movie.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
+  }
+}
